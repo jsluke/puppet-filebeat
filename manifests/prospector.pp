@@ -47,7 +47,7 @@ define filebeat::prospector (
     default => 'prospector.yml.erb',
   }
 
-  if $::filebeat_version {
+  if defined('$::filebeat_version') {
     $skip_validation = versioncmp($::filebeat_version, $filebeat::major_version) ? {
       -1      => true,
       default => false,
